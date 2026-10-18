@@ -1,0 +1,54 @@
+{
+  "name": "mx-route-mcp",
+  "version": "0.1.0",
+  "description": "Model Context Protocol server for the MXroute email hosting API: manage domains, mailboxes, forwarders, spam settings, DNS info, quotas and reseller accounts from any MCP client.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Maui Growth Co. (https://mauigrowth.co)",
+  "bin": {
+    "mx-route-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "node scripts/clean.mjs && tsc -p tsconfig.build.json && node scripts/postbuild.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run build && node scripts/run-tests.mjs",
+    "prepublishOnly": "npm run typecheck && npm test",
+    "check:spec": "npm run build && node scripts/check-spec.mjs",
+    "docs:tools": "npm run build && node scripts/gen-readme-tools.mjs",
+    "prepare": "npm run build",
+    "smoke:live": "node scripts/live-smoke.mjs"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "mxroute",
+    "email",
+    "email-hosting",
+    "claude",
+    "ai-agents"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MauiGrowth/mx-route-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MauiGrowth/mx-route-mcp/issues"
+  },
+  "homepage": "https://github.com/MauiGrowth/mx-route-mcp#readme",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "typescript": "^7.0.2"
+  }
+}
